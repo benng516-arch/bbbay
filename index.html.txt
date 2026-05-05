@@ -1,0 +1,28 @@
+<video id="bdayVideo" playsinline preload="auto">
+    <source src="card_video.mp4" type="video/mp4">
+</video>
+
+<script>
+    function startSurprise() {
+        var video = document.getElementById('bdayVideo');
+        var poster = document.getElementById('poster');
+        var hint = document.getElementById('hint');
+        
+        // 隱藏封面和提示
+        poster.style.display = 'none';
+        hint.style.display = 'none';
+        
+        // 顯示影片並播放
+        video.style.display = 'block';
+        
+        var playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // 如果自動播放被瀏覽器攔截，顯示一個按鈕引導用戶手動點擊
+                console.log("播放失敗:", error);
+                alert("請點擊螢幕以播放祝福！");
+            });
+        }
+    }
+</script>
